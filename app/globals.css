@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 138, 76, 0.1), transparent 18%),
+    radial-gradient(circle at 85% 12%, rgba(217, 119, 69, 0.12), transparent 22%),
+    radial-gradient(circle at 50% 100%, rgba(107, 90, 82, 0.14), transparent 30%),
+    linear-gradient(180deg, #12120f 0%, #151411 45%, #1a1713 100%);
+  color: #f5efe2;
+  font-family:
+    "Inter",
+    "Segoe UI",
+    sans-serif;
+}
+
+body::selection {
+  background: rgba(255, 138, 76, 0.35);
+}
+
+.grid-shell {
+  position: relative;
+}
+
+.grid-shell::before,
+.grid-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.grid-shell::before {
+  background-image:
+    linear-gradient(rgba(184, 176, 160, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(184, 176, 160, 0.05) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+}
+
+.grid-shell::after {
+  inset: 1px;
+  border: 1px solid rgba(255, 244, 224, 0.06);
+  opacity: 1;
+}
+
+.glass-panel {
+  background:
+    linear-gradient(180deg, rgba(28, 27, 23, 0.92), rgba(19, 18, 15, 0.96));
+  backdrop-filter: blur(18px);
+}
+
+.noise-overlay {
+  position: relative;
+}
+
+.noise-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255,138,76,0.1) 0, transparent 26%),
+    radial-gradient(circle at 80% 0%, rgba(217,119,69,0.08) 0, transparent 24%);
+  opacity: 0.9;
+}
+
+.headline-balance {
+  text-wrap: balance;
+}
+
+.neon-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(60px);
+  opacity: 0.8;
+  pointer-events: none;
+}
