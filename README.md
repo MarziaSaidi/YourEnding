@@ -1,66 +1,88 @@
-# YourEnding
+# 🎬 ReEnding - AI Movie Ending Generator
 
-YourEnding is an MVP AI movie ending generator built with Next.js 14. A user types the ending they wish a movie had, the app sends that prompt to Runway, and the returned short-form video clip plays directly in the UI.
+Reimagine your favorite movie endings with AI. Type an alternate ending you wish had happened, and watch it come to life as an AI-generated video clip.
 
-## What it does
+![ReEnding Demo](./public/demo.png)
 
-- Takes a natural-language alternate movie ending prompt
-- Sends the prompt to Runway's text-to-video flow
-- Waits for generation to finish, then returns a playable clip
-- Presents the result in a product-style landing page
+## ✨ What It Does
 
-## Stack
+Users describe a movie they watched and an alternate ending they envisioned. The app generates a short AI video visualizing that alternate ending — no filmmaking skills required.
 
-- Next.js 14 App Router
-- TypeScript
-- Tailwind CSS
-- Runway ML SDK
-- Vercel for deployment
+**Example prompts:**
 
-## Local setup
+- "Inception: Instead of the ambiguous top spinning, it clearly falls over and Dom is home for real"
+- "Titanic: Jack climbs onto the door with Rose, both survive floating together in the Atlantic"
+- "The Shawshank Redemption: Red decides to stay in the halfway house instead of joining Andy"
 
-1. Install dependencies:
+## 🚀 Live Demo
 
-   ```bash
-   npm install
-   ```
+**[Try it here](your-vercel-url-here)** _(will add after deployment)_
 
-2. Create a local env file:
+## 🛠️ Tech Stack
 
-   ```bash
-   cp .env.example .env.local
-   ```
+- **Frontend**: Next.js 14 (App Router), TypeScript, Tailwind CSS
+- **AI Video Generation**: Replicate API (Zeroscope v2 XL model)
+- **Deployment**: Vercel
+- **Architecture**: Server-side API routes for secure API key handling
 
-3. Add your Runway API key to `.env.local`:
+## 🏗️ How It Works
 
-   ```bash
-   RUNWAY_API_KEY=your_runway_api_key
-   ```
+1. User enters a movie ending prompt
+2. Frontend sends POST request to `/api/generate`
+3. Server calls Replicate's text-to-video AI model
+4. AI generates a ~3 second video clip (takes 1-2 minutes)
+5. Video URL returned and displayed in browser
 
-4. Start the app:
+## 📦 Local Setup
 
-   ```bash
-   npm run dev
-   ```
+```bash
+# Clone the repo
+git clone https://github.com/MarziaSaidi/yourending.git
+cd yourending
 
-5. Open `http://localhost:3000`
+# Install dependencies
+npm install
 
-## API flow
+# Add your Replicate API token to .env.local
+REPLICATE_API_TOKEN=r8_your_token_here
 
-- `POST /api/generate`
-- Validates the prompt
-- Calls Runway with `model: "gen4.5"`, `promptText`, `ratio: "1280:720"`, and `duration: 5`
-- Waits for the generated output URL and returns it to the client
+# Run locally
+npm run dev
+```
 
-## MVP notes
+Visit `http://localhost:3000`
 
-- No auth
-- No social feed
-- No real movie footage
-- Supabase and Cloudinary are not wired yet in this first MVP scaffold
+## 🎯 Technical Highlights
 
-## Next recommended steps
+- **Async video generation** with loading states and error handling
+- **Type-safe API** using TypeScript interfaces
+- **Prompt validation** (600 character limit, required fields)
+- **Graceful error handling** with user-friendly messages
+- **Environment variable security** (API keys never exposed to client)
 
-1. Add persistence for prompts and generated URLs in Supabase.
-2. Mirror finished clips into Cloudinary for delivery and transformations.
-3. Add example screenshots or a GIF after the first successful generation.
+## 🎓 What I Learned
+
+- Integrating third-party AI APIs (Replicate)
+- Handling long-running async operations in Next.js
+- Building type-safe API routes with proper error handling
+- Managing API costs and rate limits
+- Setting user expectations for AI-generated content
+
+## 📝 Current Limitations (MVP Scope)
+
+- Video quality is abstract/stylized (limitation of current text-to-video models)
+- ~1-2 minute generation time
+- No user authentication or video history
+- Single video generation at a time
+
+## 🔮 Future Enhancements
+
+- User accounts and video gallery
+- Higher quality models (when available/affordable)
+- Social sharing features
+- Prompt suggestions based on popular movies
+- Save/download generated videos
+
+## 👤 Author
+
+**Marzia Saidi**

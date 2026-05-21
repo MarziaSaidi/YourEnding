@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { generateRunwayVideo } from "@/lib/runway";
+import { generateReplicateVideo } from "@/lib/replicate";
 
 type GenerateRequestBody = {
   prompt?: string;
@@ -21,8 +21,8 @@ export async function POST(request: Request) {
       );
     }
 
-    const result = await generateRunwayVideo(prompt);
-    return NextResponse.json(result);
+    const videoUrl = await generateReplicateVideo(prompt);
+    return NextResponse.json({ videoUrl });
   } catch (error) {
     const message =
       error instanceof Error ? error.message : "Unable to generate a video right now.";

@@ -4,8 +4,6 @@ import { FormEvent, useState } from "react";
 
 type GenerateVideoResponse = {
   videoUrl: string;
-  provider: "runway";
-  prompt: string;
 };
 
 const starterPrompt =
@@ -230,6 +228,9 @@ export function GeneratorForm() {
               <video
                 src={videoUrl}
                 controls
+                autoPlay
+                loop
+                muted
                 playsInline
                 className="aspect-video w-full rounded-[1.25rem] border border-white/10 bg-black object-cover"
               />
